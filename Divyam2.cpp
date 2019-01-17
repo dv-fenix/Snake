@@ -388,11 +388,10 @@ void getinp(){
 	string name; 
 	int id;
 	
+	if(ifstream("High Score.txt")){
 	ifstream FILE("High Score.txt");
-
-	cout<<s1;
 	//ACCESS DATABASE
-	while(FILE>>id>>name>>score){
+	if(FILE>>id>>name>>score){
 		if(s1>score){
 			string user;
 			
@@ -406,13 +405,31 @@ void getinp(){
 			ofstream FILE1;
 			FILE1.open("High Score.txt");
 			FILE1<<id<<" "<<name<<" "<<score<<endl; 
-			break;
 			FILE.close();	
 		
 
 		}
+	}else{
+			string user;
+			
+			cout<<"Enter your Name:"<<endl;
+			cin>>user;
+			s1;
+			
+			//ENTER TEXT IN DATABASE
+			ofstream FILE1;
+			FILE1.open("High Score.txt");
+			FILE1<<1<<" "<<user<<" "<<s1<<endl; 
+			
 	}
-
+}else{
+	//CREATES THE REQUIRED DATABASE
+	ofstream FILE;
+	FILE.open("High Score.txt");
+	FILE.close();
+	getinp();
+	
+}
 }
 
 //GENEREATE SPECIAL FOOD PARTICLE
